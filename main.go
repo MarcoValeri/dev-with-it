@@ -16,6 +16,7 @@ func main() {
 
 	// Controllers
 	controller.Login()
+	controller.AdminDashboard()
 	controller.Home()
 
 	http.ListenAndServe(":80", nil)
