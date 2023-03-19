@@ -1,4 +1,4 @@
-package homeController
+package controller
 
 import (
 	"net/http"
@@ -9,13 +9,13 @@ type PageData struct {
 	PageTitle string
 }
 
-func HomeController() {
+func Home() {
 
 	tmpl := template.Must(template.ParseFiles("./views/home.html"))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		data := PageData{
-			PageTitle: "Dev with It!!",
+			PageTitle: "Dev with It",
 		}
 		tmpl.Execute(w, data)
 	})

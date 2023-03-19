@@ -1,7 +1,7 @@
 package main
 
 import (
-	homeController "devwithit/controllers"
+	controller "devwithit/controllers"
 	"net/http"
 )
 
@@ -15,7 +15,8 @@ func main() {
 	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
 	// Controllers
-	homeController.HomeController()
+	controller.Login()
+	controller.Home()
 
 	http.ListenAndServe(":80", nil)
 }
