@@ -1,7 +1,7 @@
 package main
 
 import (
-	"html/template"
+	homeController "devwithit/controllers"
 	"net/http"
 )
 
@@ -14,15 +14,8 @@ func main() {
 	fs := http.FileServer(http.Dir("./public"))
 	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
-	// Template
-	tmpl := template.Must(template.ParseFiles("./views/home.html"))
+	// Controllers
+	homeController.HomeController()
 
-	// Handle
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		data := PageData{
-			PageTitle: "Dev With It",
-		}
-		tmpl.Execute(w, data)
-	})
 	http.ListenAndServe(":80", nil)
 }
