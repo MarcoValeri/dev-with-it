@@ -3,6 +3,8 @@ package main
 import (
 	"html/template"
 	"net/http"
+
+	homeController "dev-with-it/controllers"
 )
 
 type PageData struct {
@@ -16,6 +18,9 @@ func main() {
 
 	// Template
 	tmpl := template.Must(template.ParseFiles("./views/home.html"))
+
+	// Import
+	homeController.HomeController()
 
 	// Handle
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
