@@ -11,8 +11,8 @@ type PageData struct {
 
 func main() {
 	// Static files
-	fs := http.FileServer(http.Dir("static/"))
-	http.Handle("/static", http.StripPrefix("/static", fs))
+	fs := http.FileServer(http.Dir("./public"))
+	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
 	// Template
 	tmpl := template.Must(template.ParseFiles("./views/home.html"))
