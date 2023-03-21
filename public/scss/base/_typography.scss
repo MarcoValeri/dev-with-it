@@ -1,0 +1,69 @@
+// Font
+.h1 {
+    font-size: 5.5rem;
+    //5
+    //4.5
+}
+
+.h2 {
+    font-size: 4.3rem;
+    // 3.8
+    // 3.3
+}
+
+.h3 {
+    font-size: 3.5rem;
+    // 3
+}
+
+.h4 {
+    font-size: 2.8rem;
+}
+
+.h5 {
+    font-size: 2.5rem;
+}
+
+.body-1 {
+    font-size: 2.2rem;
+    line-height: 1.6;
+}
+
+.body-2 {
+    font-size: 2rem;
+    line-height: 1.6;
+}
+
+.body-3 {
+    font-size: 1.8rem;
+    line-height: 1.6;
+}
+
+.body-4 {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+.p {
+    font-size: 2.2rem;
+    line-height: 1.6;
+}
+
+.p--bold {
+    font-weight: 900;
+    line-height: 1.6;
+}
+
+// Inputs
+.input-text {
+    font-size: 1.6rem;
+    padding: 1rem;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+    &:focus {
+        outline: none;
+        border: 1px solid #008000;
+    }
+}

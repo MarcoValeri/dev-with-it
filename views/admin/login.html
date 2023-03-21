@@ -14,13 +14,19 @@
         <a href="/login">Login</a>
         <a href="/admin/dashboard">Dashboard</a>
     </ul>
-    <h1>{{.PageTitle}}</h1>
-    <form method="POST">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="text" />
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" />
-        <input type="submit" />
-    </form>
+    <div class="login">
+        <div class="login__container">
+            <div class="login__container-title">
+                <h2 class="h2">{{.PageTitle}}</h2>
+            </div>
+            <div class="login__container-form">    
+                <form method="POST">
+                    <input class="input-text" name="email" type="text" placeholder="Email" />
+                    <input class="input-text" name="password" type="password" placeholder="Password" />
+                    <input type="submit" />
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
