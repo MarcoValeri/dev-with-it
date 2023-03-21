@@ -15,8 +15,7 @@ func main() {
 	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
 	// Controllers
-	controller.Login()
-	controller.AdminDashboard()
+	controller.AdminController()
 	controller.Home()
 
 	http.ListenAndServe(":80", nil)
