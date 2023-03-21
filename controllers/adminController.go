@@ -1,9 +1,10 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 	"text/template"
+
+	"github.com/gorilla/sessions"
 )
 
 type LoginDetails struct {
@@ -11,27 +12,38 @@ type LoginDetails struct {
 	Password string
 }
 
+// Initialize the session
+var (
+	key   = []byte("super-secret-key")
+	store = sessions.NewCookieStore(key)
+)
+
 func Login() {
+
 	tmpl := template.Must(template.ParseFiles("./views/admin/login.html"))
 
 	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
 
-		if r.Method != http.MethodPost {
-			tmpl.Execute(w, nil)
-			return
-		}
+		// Session
+		session, _ := store.Get(r, "cookie-name")
+
+		// Session: set the value
+		session.Values["authenticated"] = false
+		session.Save(r, w)
 
 		details := LoginDetails{
 			Email:    r.FormValue("email"),
 			Password: r.FormValue("password"),
 		}
 
-		if details.Email == "info@marcovaleri.net" && details.Password == "S!lver09" {
-			fmt.Println("Login: TRUE")
-			http.Redirect(w, r, "/admin/dashboard", http.StatusSeeOther)
+		if details.Email == "info@marcovaleri.net" {
+			// Set session true
+			session.Values["authenticated"] = true
+			session.Save(r, w)
 		} else {
-			fmt.Println("Login: FALSE")
-			http.Redirect(w, r, "/", http.StatusSeeOther)
+			// Set session false
+			session.Values["authenticated"] = false
+			session.Save(r, w)
 		}
 
 		data := PageData{
@@ -39,6 +51,7 @@ func Login() {
 		}
 
 		tmpl.Execute(w, data)
+
 	})
 }
 
@@ -46,10 +59,21 @@ func AdminDashboard() {
 	tmpl := template.Must(template.ParseFiles("./views/admin/dashboard.html"))
 
 	http.HandleFunc("/admin/dashboard", func(w http.ResponseWriter, r *http.Request) {
-		data := PageData{
-			PageTitle: "Admin Dashboard",
+
+		// Session: get it
+		session, _ := store.Get(r, "cookie-name")
+
+		if session.Values["authenticated"] == true {
+
+			data := PageData{
+				PageTitle: "Admin Dashboard",
+			}
+
+			tmpl.Execute(w, data)
+
+		} else {
+			http.Redirect(w, r, "/login", http.StatusSeeOther)
 		}
 
-		tmpl.Execute(w, data)
 	})
 }
