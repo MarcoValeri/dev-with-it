@@ -1,8 +1,19 @@
+/**
+* Create a mixin that works for
+* media queries in the following breakpoints:
+*           xs
+*           sm
+*           md
+*           lg
+*           xl
+*           xxl
+*
+* This project follow the logic of responsive-design
+*/
 .login {
   width: 100%;
   height: 80vh;
-  position: absolute;
-  border: 1px solid #f00; }
+  position: absolute; }
   .login__container {
     position: relative;
     top: 30%;
@@ -10,11 +21,27 @@
     transform: translate(-50%, -50%); }
   .login__container-title {
     margin-bottom: 5rem;
-    text-align: center;
-    border: 1px solid #f00; }
+    text-align: center; }
   .login__container-form {
-    text-align: center;
-    border: 1px solid #f00; }
+    text-align: center; }
+  .login__wrapper {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto; }
+    @media only screen and (max-width: 767px) {
+      .login__wrapper {
+        width: 100%; } }
+  .login__input {
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 2rem; }
+    @media only screen and (max-width: 575px) {
+      .login__input {
+        width: 80%; } }
+  .login__button {
+    width: 10rem; }
 
 * {
   padding: 0;
@@ -22,6 +49,23 @@
 
 html {
   font-size: 62.5%; }
+
+/**
+* Buttons, it works with
+*   - input
+*   - button
+*/
+.button {
+  font-size: 1.6rem;
+  padding: 1rem;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 5px; }
+  .button:hover {
+    color: #fff;
+    background-color: #123456;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 2px 2px rgba(18, 52, 86, 0.3); }
 
 .h1 {
   font-size: 5.5rem; }
