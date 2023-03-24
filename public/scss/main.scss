@@ -3,8 +3,13 @@
 @import './abstracts/variables';
 
 // Import admin files
+@import './admin/dashboard';
 @import './admin/login';
+@import './admin/admin-sidebar';
 
 // Import base files
 @import './base/base';
 @import './base/typography';
+
+// Import layout files
+@import './layout/main';

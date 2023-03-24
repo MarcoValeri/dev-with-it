@@ -1,0 +1,14 @@
+.admin-sidebar {
+    padding: 1rem;
+    color: $white;
+    background-color: $black;
+    border: 1px solid $white;
+
+    a {
+        color: $white;
+    }
+
+    &__container-menu {
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,34 @@
+.main {
+    display: grid;
+    grid-template-columns: 1fr 4fr 2fr;
+    grid-template-areas:
+    "main__sidebar-left main__content main__sidebar-right";
+    margin: 5rem auto;
+
+    @include respond(md) {
+        grid-template-columns: 1fr 4fr;
+        grid-template-areas:
+        "main__sidebar-left main__content"
+        "main__sidebar-right main__sidebar-right";
+    }
+
+    @include respond(sm) {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "main__content"
+        "main__sidebar-left"
+        "main__sidebar-right";
+    }
+
+    &__sidebar-left {
+        grid-area: main__sidebar-left;
+    }
+
+    &__content {
+        grid-area: main__content;
+    }
+
+    &__sidebar-right {
+        grid-area: main__sidebar-right;
+    }
+}

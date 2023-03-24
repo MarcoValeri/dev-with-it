@@ -6,7 +6,7 @@ import (
 )
 
 func AdminDashboard() {
-	tmpl := template.Must(template.ParseFiles("./views/admin/dashboard.html"))
+	tmpl := template.Must(template.ParseFiles("./views/admin/dashboard.html", "./views/includes/head.html", "./views/includes/header.html", "./views/includes/admin-sidebar.html"))
 
 	http.HandleFunc("/admin/dashboard", func(w http.ResponseWriter, r *http.Request) {
 
