@@ -7,4 +7,5 @@ import (
 func AdminController() {
 	adminControllers.Login()
 	adminControllers.AdminDashboard()
+	adminControllers.Users()
 }

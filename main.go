@@ -2,6 +2,7 @@ package main
 
 import (
 	controller "devwithit/controllers"
+	util "devwithit/util"
 	"net/http"
 )
 
@@ -17,6 +18,9 @@ func main() {
 	// Controllers
 	controller.AdminController()
 	controller.Home()
+
+	// Database
+	util.Connect()
 
 	http.ListenAndServe(":80", nil)
 }

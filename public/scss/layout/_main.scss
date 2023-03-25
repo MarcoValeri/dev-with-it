@@ -3,7 +3,6 @@
     grid-template-columns: 1fr 4fr 2fr;
     grid-template-areas:
     "main__sidebar-left main__content main__sidebar-right";
-    margin: 5rem auto;
 
     @include respond(md) {
         grid-template-columns: 1fr 4fr;

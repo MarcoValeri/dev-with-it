@@ -44,6 +44,7 @@ func Login() {
 			// Set session true
 			session.Values["user-admin-authenticated"] = true
 			session.Save(r, w)
+			http.Redirect(w, r, "/admin/dashboard", http.StatusSeeOther)
 		} else {
 			// Set session false
 			session.Values["user-admin-authenticated"] = false

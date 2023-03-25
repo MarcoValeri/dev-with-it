@@ -11,7 +11,7 @@
 * This project follow the logic of responsive-design
 */
 .dashboard {
-  padding: 1rem;
+  padding: 10rem 1rem 1rem 1rem;
   color: #fff;
   background-color: #000;
   border-left: 1px solid #fff;
@@ -51,7 +51,7 @@
     width: 10rem; }
 
 .admin-sidebar {
-  padding: 1rem;
+  padding: 5rem 1rem 1rem 1rem;
   color: #fff;
   background-color: #000;
   border: 1px solid #fff; }
@@ -140,8 +140,7 @@ html {
 .main {
   display: grid;
   grid-template-columns: 1fr 4fr 2fr;
-  grid-template-areas: "main__sidebar-left main__content main__sidebar-right";
-  margin: 5rem auto; }
+  grid-template-areas: "main__sidebar-left main__content main__sidebar-right"; }
   @media only screen and (max-width: 767px) {
     .main {
       grid-template-columns: 1fr 4fr;
