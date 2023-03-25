@@ -10,6 +10,45 @@
 *
 * This project follow the logic of responsive-design
 */
+.add-users {
+  color: #fff;
+  background-color: #000; }
+  .add-users__form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "add-users__email" "add-users__password" "add-users__button";
+    padding-top: 5rem; }
+  .add-users__email {
+    grid-area: add-users__email;
+    width: 50%;
+    margin: 0rem auto 2rem auto;
+    border: 1px solid #fff; }
+    @media only screen and (max-width: 767px) {
+      .add-users__email {
+        width: 80%; } }
+  .add-users__password {
+    grid-area: add-users__password;
+    width: 50%;
+    margin: 0rem auto 2rem auto;
+    border: 1px solid #fff; }
+    @media only screen and (max-width: 767px) {
+      .add-users__password {
+        width: 80%; } }
+  .add-users__button {
+    grid-area: add-users__button;
+    margin: 0rem auto 2rem auto;
+    border: 1px solid #fff; }
+
+.admin-sidebar {
+  padding: 5rem 1rem 1rem 1rem;
+  color: #fff;
+  background-color: #000;
+  border: 1px solid #fff; }
+  .admin-sidebar a {
+    color: #fff; }
+  .admin-sidebar__container-menu {
+    margin-bottom: 1rem; }
+
 .dashboard {
   padding: 10rem 1rem 1rem 1rem;
   color: #fff;
@@ -49,16 +88,6 @@
         width: 80%; } }
   .login__button {
     width: 10rem; }
-
-.admin-sidebar {
-  padding: 5rem 1rem 1rem 1rem;
-  color: #fff;
-  background-color: #000;
-  border: 1px solid #fff; }
-  .admin-sidebar a {
-    color: #fff; }
-  .admin-sidebar__container-menu {
-    margin-bottom: 1rem; }
 
 * {
   padding: 0;

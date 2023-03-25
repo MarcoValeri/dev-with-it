@@ -3,9 +3,10 @@
 @import './abstracts/variables';
 
 // Import admin files
+@import './admin/admin-add-users';
+@import './admin/admin-sidebar';
 @import './admin/dashboard';
 @import './admin/login';
-@import './admin/admin-sidebar';
 
 // Import base files
 @import './base/base';

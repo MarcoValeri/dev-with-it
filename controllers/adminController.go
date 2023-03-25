@@ -6,6 +6,7 @@ import (
 
 func AdminController() {
 	adminControllers.Login()
+	adminControllers.AdminAddUsers()
 	adminControllers.AdminDashboard()
 	adminControllers.Users()
 }

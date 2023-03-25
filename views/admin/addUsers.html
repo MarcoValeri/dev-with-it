@@ -1,0 +1,28 @@
+{{ template "head" . }}
+<title>{{.PageTitle}}</title>
+</head>
+<body>
+    <main class="main">
+        <section class="main__sidebar-left">
+            {{ template "admin-sidebar" . }}
+        </section>
+        <section class="main__content">
+            <div class="dashboard">
+                <h1 class="h2">Add Users</h1>
+            </div>
+            <div class="add-users">
+                <form method="POST">
+                    <div class="add-users__form-wrapper">
+                        <input class="add-users__email input-text" name="email" type="email" placeholder="Email" />
+                        <input class="add-users__password input-text" name="password" type="password" placeholder="Password" />
+                        <input class="add-users__button button" name="add-new-user" type="submit" value="Add new user" />
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="main__sidebar-right">
+            {{ template "admin-sidebar" . }}
+        </section>
+    </main>
+</body>
+</html>
