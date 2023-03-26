@@ -1,9 +1,10 @@
 package adminControllers
 
 import (
-	"fmt"
 	"net/http"
 	"text/template"
+
+	models "devwithit/models"
 )
 
 type NewUserDetails struct {
@@ -31,9 +32,8 @@ func AdminAddUsers() {
 
 			// If the form has been submitted, process the data
 			if details.Submit == "Add new user" {
-				fmt.Println("Email:", details.Email)
-				fmt.Println("Password:", details.Password)
-				fmt.Println("Submit:", r.FormValue("add-new-user"))
+				models.UserNew(details.Email, details.Password)
+				http.Redirect(w, r, "/admin/users", http.StatusSeeOther)
 			}
 
 			data := PageData{

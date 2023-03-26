@@ -11,7 +11,7 @@ import (
 
 var db *sql.DB
 
-func Connect() {
+func Connect() *sql.DB {
 
 	// ENV data
 	err := godotenv.Load(".env")
@@ -45,5 +45,7 @@ func Connect() {
 	if pingErr != nil {
 		log.Fatal(pingErr)
 	}
+
+	return db
 
 }
