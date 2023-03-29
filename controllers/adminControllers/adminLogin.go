@@ -5,6 +5,8 @@ import (
 	"text/template"
 
 	"github.com/gorilla/sessions"
+
+	models "devwithit/models"
 )
 
 type LoginDetails struct {
@@ -40,7 +42,7 @@ func Login() {
 			Password: r.FormValue("password"),
 		}
 
-		if details.Email == "info@marcovaleri.net" && details.Password == "S!lver09" {
+		if models.CheckUser(details.Email, details.Password) {
 			// Set session true
 			session.Values["user-admin-authenticated"] = true
 			session.Save(r, w)
