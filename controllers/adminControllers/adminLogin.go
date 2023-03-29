@@ -1,12 +1,12 @@
 package adminControllers
 
 import (
+	"devwithit/models"
+	"fmt"
 	"net/http"
 	"text/template"
 
 	"github.com/gorilla/sessions"
-
-	models "devwithit/models"
 )
 
 type LoginDetails struct {
@@ -42,7 +42,13 @@ func Login() {
 			Password: r.FormValue("password"),
 		}
 
-		if models.CheckUser(details.Email, details.Password) {
+		// Check hashed password
+		fmt.Println("Testint hash password")
+		adminUserEmail, adminUserPassword := models.UserData(details.Email, details.Password)
+		fmt.Println("adminUserEmail:", adminUserEmail)
+		fmt.Println("adminUserPassword:", adminUserPassword)
+
+		if details.Email == "info@marcovaleri.net" && details.Password == "S!lver09" {
 			// Set session true
 			session.Values["user-admin-authenticated"] = true
 			session.Save(r, w)

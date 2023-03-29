@@ -2,7 +2,6 @@ package models
 
 import (
 	util "devwithit/util"
-	"fmt"
 	"log"
 )
 
@@ -17,18 +16,33 @@ import (
 // }
 
 var (
+	setId       int
 	setEmail    string
 	setPassword string
 )
 
-func CheckUser(email, password string) bool {
+func UserData(email, password string) (string, string) {
 
-	// Check hashed password
-	passwordHashed, err := util.HashPassword(password)
+	// Check if the user exist and gets their email and password
+	db := util.Connect()
+	rows, err := db.Query("SELECT * FROM users WHERE email = ? AND password = ?", email, password)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(passwordHashed)
+	defer rows.Close()
+
+	for rows.Next() {
+		err := rows.Scan(&setId, &setEmail, &setPassword)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
+	return setEmail, setPassword
+
+}
+
+func CheckUser(email, password string) bool {
 
 	// Check if the user exist in the db
 	db := util.Connect()
