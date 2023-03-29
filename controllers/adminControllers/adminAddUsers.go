@@ -1,10 +1,12 @@
 package adminControllers
 
 import (
+	"log"
 	"net/http"
 	"text/template"
 
 	models "devwithit/models"
+	util "devwithit/util"
 )
 
 type NewUserDetails struct {
@@ -32,7 +34,11 @@ func AdminAddUsers() {
 
 			// If the form has been submitted, process the data
 			if details.Submit == "Add new user" {
-				models.UserNew(details.Email, details.Password)
+				passwordHashed, err := util.HashPassword(details.Password)
+				if err != nil {
+					log.Fatal(err)
+				}
+				models.UserNew(details.Email, passwordHashed)
 				http.Redirect(w, r, "/admin/users", http.StatusSeeOther)
 			}
 
