@@ -1,8 +1,6 @@
 package adminControllers
 
 import (
-	"devwithit/models"
-	"fmt"
 	"net/http"
 	"text/template"
 
@@ -41,12 +39,6 @@ func Login() {
 			Email:    r.FormValue("email"),
 			Password: r.FormValue("password"),
 		}
-
-		// Check hashed password
-		fmt.Println("Testint hash password")
-		adminUserEmail, adminUserPassword := models.UserData(details.Email, details.Password)
-		fmt.Println("adminUserEmail:", adminUserEmail)
-		fmt.Println("adminUserPassword:", adminUserPassword)
 
 		if details.Email == "info@marcovaleri.net" && details.Password == "S!lver09" {
 			// Set session true
