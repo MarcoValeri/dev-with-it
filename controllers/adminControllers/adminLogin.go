@@ -1,6 +1,8 @@
 package adminControllers
 
 import (
+	"devwithit/models"
+	util "devwithit/util"
 	"net/http"
 	"text/template"
 
@@ -40,15 +42,21 @@ func Login() {
 			Password: r.FormValue("password"),
 		}
 
-		if details.Email == "info@marcovaleri.net" && details.Password == "S!lver09" {
-			// Set session true
-			session.Values["user-admin-authenticated"] = true
-			session.Save(r, w)
-			http.Redirect(w, r, "/admin/dashboard", http.StatusSeeOther)
-		} else {
-			// Set session false
-			session.Values["user-admin-authenticated"] = false
-			session.Save(r, w)
+		// Check User Login
+		if len(details.Email) > 0 && len(details.Password) > 0 {
+			_, userPswHashed := models.UserData(details.Email)
+
+			flag := util.CheckPasswordHash(details.Password, userPswHashed)
+			if flag {
+				// Set session true
+				session.Values["user-admin-authenticated"] = true
+				session.Save(r, w)
+				http.Redirect(w, r, "/admin/dashboard", http.StatusSeeOther)
+			} else {
+				// Set session false
+				session.Values["user-admin-authenticated"] = false
+				session.Save(r, w)
+			}
 		}
 
 		data := PageData{

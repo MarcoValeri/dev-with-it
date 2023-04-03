@@ -5,27 +5,17 @@ import (
 	"log"
 )
 
-// func CheckUser(email, password string) (*sql.Rows, error) {
-
-// 	// Check if the user exist in the db
-// 	db := util.Connect()
-// 	check, err := db.Query("SELECT EXISTS(SELECT * FROM users WHERE email = ? AND password = ?)", email, password)
-// 	// check, err := db.Query("SELECT EXISTS(SELECT * FROM users WHERE email = 'info@marcovaleri.net' AND password = 'S!lver09')")
-// 	return check, err
-
-// }
-
 var (
 	setId       int
 	setEmail    string
 	setPassword string
 )
 
-func UserData(email, password string) (string, string) {
+func UserData(email string) (string, string) {
 
 	// Check if the user exist and gets their email and password
 	db := util.Connect()
-	rows, err := db.Query("SELECT * FROM users WHERE email = ? AND password = ?", email, password)
+	rows, err := db.Query("SELECT * FROM users WHERE email = ?", email)
 	if err != nil {
 		log.Fatal(err)
 	}
