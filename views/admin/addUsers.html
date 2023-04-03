@@ -16,6 +16,11 @@
                         <input class="add-users__email input-text" name="email" type="email" placeholder="Email" />
                         <input class="add-users__password input-text" name="password" type="password" placeholder="Password" />
                         <input class="add-users__button button" name="add-new-user" type="submit" value="Add new user" />
+                        <div class="add-users__error">
+                            {{ if .UserError }}
+                                <p class="add-users__user-error body-2">User already exist</p>
+                            {{ end }}
+                        </div>
                     </div>
                 </form>
             </div>

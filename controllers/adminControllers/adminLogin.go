@@ -14,8 +14,9 @@ type LoginDetails struct {
 	Password string
 }
 
-type PageData struct {
+type PageAdminData struct {
 	PageTitle string
+	UserError bool
 }
 
 // Initialize the session
@@ -59,8 +60,9 @@ func Login() {
 			}
 		}
 
-		data := PageData{
+		data := PageAdminData{
 			PageTitle: "Login Page",
+			UserError: false,
 		}
 
 		tmpl.Execute(w, data)

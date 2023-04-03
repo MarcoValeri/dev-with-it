@@ -14,7 +14,7 @@ func Users() {
 
 		if session.Values["user-admin-authenticated"] == true {
 
-			data := PageData{
+			data := PageAdminData{
 				PageTitle: "Admin Users",
 			}
 

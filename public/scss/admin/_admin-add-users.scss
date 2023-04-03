@@ -8,14 +8,15 @@
         grid-template-areas:
         "add-users__email"
         "add-users__password"
-        "add-users__button";
+        "add-users__button"
+        "add-users__error";
         padding-top: 5rem;
     }
 
     &__email {
         grid-area: add-users__email;
         width: 50%;
-        margin: 0rem auto 2rem auto;
+        margin: 0 auto 2rem auto;
         border: 1px solid #fff;
 
         @include respond(md) {
@@ -26,7 +27,7 @@
     &__password {
         grid-area: add-users__password;
         width: 50%;
-        margin: 0rem auto 2rem auto;
+        margin: 0 auto 2rem auto;
         border: 1px solid #fff;
 
         @include respond(md) {
@@ -36,7 +37,16 @@
 
     &__button {
         grid-area: add-users__button;
-        margin: 0rem auto 2rem auto;
+        margin: 0 auto 2rem auto;
         border: 1px solid #fff;
+    }
+
+    &__error {
+        grid-area: add-users__error;
+        margin: 0 auto 2rem auto;
+    }
+
+    &__user-error {
+        color: $red;
     }
 }

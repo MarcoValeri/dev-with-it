@@ -16,12 +16,12 @@
   .add-users__form-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas: "add-users__email" "add-users__password" "add-users__button";
+    grid-template-areas: "add-users__email" "add-users__password" "add-users__button" "add-users__error";
     padding-top: 5rem; }
   .add-users__email {
     grid-area: add-users__email;
     width: 50%;
-    margin: 0rem auto 2rem auto;
+    margin: 0 auto 2rem auto;
     border: 1px solid #fff; }
     @media only screen and (max-width: 767px) {
       .add-users__email {
@@ -29,15 +29,20 @@
   .add-users__password {
     grid-area: add-users__password;
     width: 50%;
-    margin: 0rem auto 2rem auto;
+    margin: 0 auto 2rem auto;
     border: 1px solid #fff; }
     @media only screen and (max-width: 767px) {
       .add-users__password {
         width: 80%; } }
   .add-users__button {
     grid-area: add-users__button;
-    margin: 0rem auto 2rem auto;
+    margin: 0 auto 2rem auto;
     border: 1px solid #fff; }
+  .add-users__error {
+    grid-area: add-users__error;
+    margin: 0 auto 2rem auto; }
+  .add-users__user-error {
+    color: #d00; }
 
 .admin-sidebar {
   padding: 5rem 1rem 1rem 1rem;
@@ -145,7 +150,7 @@ html {
   line-height: 1.6; }
 
 .p {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   line-height: 1.6; }
 
 .p--bold {

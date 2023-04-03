@@ -11,6 +11,42 @@ var (
 	setPassword string
 )
 
+func CheckUser(email, password string) bool {
+
+	// Check if the user exist in the db
+	db := util.Connect()
+	rows, err := db.Query("SELECT * FROM users WHERE email = ? AND password = ?", email, password)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	if rows.Next() {
+		return true
+	}
+
+	return false
+
+}
+
+func CheckUserEmail(email string) bool {
+
+	// Check if the user exist in the db
+	db := util.Connect()
+	rows, err := db.Query("SELECT email FROM users WHERE email = ?", email)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	if rows.Next() {
+		return true
+	}
+
+	return false
+
+}
+
 func UserData(email string) (string, string) {
 
 	// Check if the user exist and gets their email and password
@@ -29,24 +65,6 @@ func UserData(email string) (string, string) {
 	}
 
 	return setEmail, setPassword
-
-}
-
-func CheckUser(email, password string) bool {
-
-	// Check if the user exist in the db
-	db := util.Connect()
-	rows, err := db.Query("SELECT * FROM users WHERE email = ? AND password = ?", email, password)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer rows.Close()
-
-	if rows.Next() {
-		return true
-	}
-
-	return false
 
 }
 

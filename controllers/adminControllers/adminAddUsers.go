@@ -15,6 +15,8 @@ type NewUserDetails struct {
 	Submit   string
 }
 
+var userError bool = false
+
 func AdminAddUsers() {
 	tmpl := template.Must(template.ParseFiles("./views/admin/addUsers.html", "./views/includes/head.html", "./views/includes/admin-sidebar.html"))
 
@@ -34,16 +36,23 @@ func AdminAddUsers() {
 
 			// If the form has been submitted, process the data
 			if details.Submit == "Add new user" {
-				passwordHashed, err := util.HashPassword(details.Password)
-				if err != nil {
-					log.Fatal(err)
+				// Add the user if the email is not already in the db
+				flag := models.CheckUserEmail(details.Email)
+				if !flag {
+					passwordHashed, err := util.HashPassword(details.Password)
+					if err != nil {
+						log.Fatal(err)
+					}
+					models.UserNew(details.Email, passwordHashed)
+					http.Redirect(w, r, "/admin/users", http.StatusSeeOther)
+				} else {
+					userError = true
 				}
-				models.UserNew(details.Email, passwordHashed)
-				http.Redirect(w, r, "/admin/users", http.StatusSeeOther)
 			}
 
-			data := PageData{
+			data := PageAdminData{
 				PageTitle: "Admin Add users",
+				UserError: userError,
 			}
 
 			tmpl.Execute(w, data)
