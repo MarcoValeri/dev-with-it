@@ -9,6 +9,22 @@
         <section class="main__content">
             <div class="dashboard">
                 <h1>Users</h1>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Edit</th>
+                    </tr>
+                    {{ range .AllAdminUsers }}
+                    <tr>
+                        <td>{{ .Id }}</td>
+                        <td>{{ .Email }}</td>
+                        <td>{{ .Password }}</td>
+                        <td>Edit</td>
+                    </tr>
+                    {{ end }}
+                </table>
             </div>
         </section>
         <section class="main__sidebar-right">

@@ -3,7 +3,14 @@ package models
 import (
 	util "devwithit/util"
 	"log"
+	"strconv"
 )
+
+type UserAdmin struct {
+	Id       string
+	Email    string
+	Password string
+}
 
 var (
 	setId       int
@@ -44,6 +51,33 @@ func CheckUserEmail(email string) bool {
 	}
 
 	return false
+
+}
+
+func GetAllUsers() []UserAdmin {
+
+	db := util.Connect()
+	rows, err := db.Query("SELECT * FROM users")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	var Id int
+	var Email string
+	var Password string
+	var userAdminData []UserAdmin
+
+	for rows.Next() {
+		err = rows.Scan(&Id, &Email, &Password)
+		if err != nil {
+			panic(err)
+		}
+		IdStr := strconv.Itoa(Id)
+		userAdminData = append(userAdminData, UserAdmin{Id: IdStr, Email: Email, Password: Password})
+	}
+
+	return userAdminData
 
 }
 

@@ -1,9 +1,15 @@
 package adminControllers
 
 import (
+	"devwithit/models"
 	"net/http"
 	"text/template"
 )
+
+type PageAdminUser struct {
+	PageTitle     string
+	AllAdminUsers []models.UserAdmin
+}
 
 func Users() {
 	tmpl := template.Must(template.ParseFiles("./views/admin/users.html", "./views/includes/head.html", "./views/includes/admin-sidebar.html"))
@@ -14,8 +20,12 @@ func Users() {
 
 		if session.Values["user-admin-authenticated"] == true {
 
-			data := PageAdminData{
-				PageTitle: "Admin Users",
+			// Get all user data
+			allAdminUsers := models.GetAllUsers()
+
+			data := PageAdminUser{
+				PageTitle:     "Admin Users",
+				AllAdminUsers: allAdminUsers,
 			}
 
 			tmpl.Execute(w, data)
